@@ -1,24 +1,25 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Data from './Components/Data';
+import Page1 from './Components/Page1';
+import Page2 from './Components/Page2';
+import Page3 from './Components/Page3';
 
 function App() {
+
+  const [msg, setMsg] = useState();
+
+  let handleInputValue = (e) => {
+      setMsg(e.target.value)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Data msg={msg} handleInputValue={handleInputValue}></Data>
+      <Page1 msg={msg}></Page1>
+      <Page2 msg={msg}></Page2>
+      <Page3 msg={msg} handleInputValue={handleInputValue}></Page3>
+    </>
   );
 }
 
